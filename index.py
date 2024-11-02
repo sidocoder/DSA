@@ -41,7 +41,7 @@ for i in range(len(arr)):
         return i
 for i in range arr:
     print(i)""" """
-# ----------------------------------------insertindg a number in array-------------------------------------------------------------------------------
+# ----------------------------------------inserting a number in array-------------------------------------------------------------------------------
 import array as arr
 a = arr.array('i', [1,2,3])
 print("the array before insertion contains:", end=" ")
@@ -113,7 +113,7 @@ if x > y:
 elif y > x:
     print("y is greater")
 else:
-    print("both are equal")"""
+    print("both are equal")""""""
 n = input("")
 y = 0
 if n <= y:
@@ -122,3 +122,36 @@ elif n == y:
     print("the number is zero")
 else:
     print("the number is positive")
+arr = [2,3,2,3,4,5]
+class Solution(object):
+    def removeElement(self, arr, val):
+        for i in range(len(arr)):
+            while arr[i]== val:
+                arr.pop(i)
+            else:
+                return val
+           
+        print(arr)
+    print(removeElement)
+maths = int(input("enter your math score:"))
+phys = int(input("enter your phys score:"))
+bio = int(input("enter your bio score:"))
+average =(maths + phys +bio)/3
+
+print("average is:",average)
+#----------------------AVERAGE OF ELEMENTS-----------------------
+a=[]
+element_number = int(input("enter the number of subjects u learnt:"))
+for i in range(element_number):
+    user_input = int(input("enter your score in subjects:"))
+    user_input = a.append(user_input)
+    average = sum(a)/len(a)
+print(average)"""
+# ----------------------FACTORIAL--------------------------------
+num = int(input("enter a number:"))
+def factorial(num):
+    for i in range (num):
+        while j < num:
+            new_num = num * (num - j)
+            j =+ 1
+print(factorial())                   
