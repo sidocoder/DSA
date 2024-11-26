@@ -149,9 +149,9 @@ for i in range(element_number):
     user_input = int(input("enter your score in subjects:"))
     user_input = a.append(user_input)
     average = sum(a)/len(a)
-print(average)
+print(average)"""
 # ----------------------------------------------------FACTORIAL---------------------------------------------
-def factorial(n):
+'''def factorial(n):
     if n == 0:
         return 1
     else:
@@ -161,7 +161,7 @@ def factorial(n):
 num = int(input("enter a number:"))
 result = factorial(num)
 print(result)        
-"""
+
 class Solution(object):
     def divide(dividend, divisor):
         if dividend > divisor:
@@ -176,3 +176,49 @@ for letter in word:
     if letter == 'a':
         j = j + 1
 print(j)
+data = 'From stephen.marquard@uct.ac.za Sat Jan  5 09:14:16 2008'
+pos = data.find('.')
+print(data[pos:pos+3])
+import array as arr
+a = arr.array('i',[2,3,5,5,1])
+reverse = a[::-1]
+print(reverse)
+
+card = list()
+card.append("H")
+card.append("e")
+card.append("l")
+card.append("l")
+card.append("o")
+reverse = card[::-1]
+print(reverse)
+
+word = input("enter a word: ")
+card = word.split()
+reverse = card[::-1]
+print(reverse)
+print(card)
+for word in card:
+    print(word, card[0])
+counts ={'chunk': 23, 'fred':45}
+key = ('chunk', 'fred', 'nuh')
+if key in counts:
+    counts[key] = counts[key] + 1
+else:
+    counts[key] = 1
+print'''
+#-----------------------SORT DICTIONARY-----------------------------------------
+d = {"a":3, "c":2, "b":5}
+t = sorted(d.items())
+print(t)
+for a,b in t:
+    print(a,b)
+
+
+c = {'a':10, 'b': 1,'c':3}
+tmp = list()
+for k,v in c.items():
+    tmp.append((v,k))
+tmp.sort( reverse=True)
+print(tmp)
+
