@@ -142,7 +142,7 @@ bio = int(input("enter your bio score:"))
 average =(maths + phys +bio)/3
 
 print("average is:",average)
-#-------------------------------------------------AVERAGE OF ELEMENTS------------------------------------
+# -------------------------------------------------AVERAGE OF ELEMENTS------------------------------------
 a=[]
 element_number = int(input("enter the number of subjects u learnt:"))
 for i in range(element_number):
@@ -161,7 +161,7 @@ print(average)"""
 num = int(input("enter a number:"))
 result = factorial(num)
 print(result)        
-
+#---------------------------------------------------
 class Solution(object):
     def divide(dividend, divisor):
         if dividend > divisor:
@@ -183,7 +183,7 @@ import array as arr
 a = arr.array('i',[2,3,5,5,1])
 reverse = a[::-1]
 print(reverse)
-
+#----------------------------REVERSE LIST----------------------------
 card = list()
 card.append("H")
 card.append("e")
@@ -192,7 +192,7 @@ card.append("l")
 card.append("o")
 reverse = card[::-1]
 print(reverse)
-
+#--------------------------------------------------------
 word = input("enter a word: ")
 card = word.split()
 reverse = card[::-1]
@@ -206,19 +206,154 @@ if key in counts:
     counts[key] = counts[key] + 1
 else:
     counts[key] = 1
-print'''
-#-----------------------SORT DICTIONARY-----------------------------------------
+print
+#-----------------------SORT DICTIONARY BY KEY(DEFAULT)-----------------------------------------
 d = {"a":3, "c":2, "b":5}
 t = sorted(d.items())
 print(t)
 for a,b in t:
     print(a,b)
 
-
+#-----------SORT DICTIONARY BY VALUE-------------------------
 c = {'a':10, 'b': 1,'c':3}
 tmp = list()
 for k,v in c.items():
     tmp.append((v,k))
-tmp.sort( reverse=True)
+tmp.sort() # or tmp.sort( reverse=True)----if wanted in reverse
 print(tmp)
+#----------------------------------------------------------------------
+class Solution:
+    def sortPeople(self, names: List[str], heights: List[int]) -> List[str]:
+        dic = {}
+        dic2 ={}
+        for i in range(len(names)):
+            dic[names[i]] = heights[i]
+            
+        tmp = list()   
+        tmp2 = list()
+        for k,v in dic.items():
+            tmp.append((v,k))
+        tmp.sort(reverse = True)
+        for i, (value, key) in enumerate(tmp):
+            dic2[i] = {key: value}
+        for key, value in dic2.items():
+            tmp2.append(list(value.keys())[0])
+            
+       
+        print(tmp2)
+#-----------------------------------------TWOSUM-----------------------------------------------------    
+class solution:
+    def twosum(self, nums: list[int], target: int) -> list[int]:
+        hash = {}
+        for i,n in enumerate(nums):
+            diff = target - n
+            if diff in hash:
+                return [hash[diff],i]
+            hash[n] = i
+        return
+'''
+class solution:
+    def twosum(self, nums: list[int], target: int) -> list[int]:
+        nums.sort()
+        l = 0
+        r = len(nums) - 1
+        for i in range(len(nums)):
+            sum = nums[l] + nums[r]
+            while l < r:
+                if sum > target:
+                    r -= 1
+                elif sum < target:
+                    l += 1
+                else:
+                    return l,r
 
+
+'''
+#----------------------------------------------------------------------------------------
+c = {'a':10, 'b': 1,'c':3}
+value = c[1]
+print(value)
+'''
+#===------------------------------------THREE SUM using three pointer----------------------------------
+'''
+nums = []
+element_number = int(input("enter the number of array: "))
+target = int(input("enter a target: "))
+for i in range(element_number):
+    uinput = int(input("enter an array: "))
+    uinput = nums.append(uinput)
+    
+def threesum(nums, target):  
+    nums.sort()
+    pointer1 = 0
+    pointer2 = 0 + 1
+    pointer3 = len(nums) - 1
+    while pointer1 < pointer2 < pointer3:
+        sum = nums[pointer1] + nums[pointer2] + nums[pointer3]
+        if sum == target:
+            return list[nums[pointer1],nums[pointer2], nums[pointer3]]
+        elif sum < target:
+            pointer2 += 1
+        elif sum < target:
+            pointer1 += 1
+        else:
+            pointer3 -= 1
+    return False
+result = threesum(nums, target)
+print(result)
+'''
+#================================THREE SUM =================================
+'''from typing import List
+
+class Solution:
+    def threeSum(self, nums: List[int]) -> List[List[int]]:
+        nums.sort()
+        n = len(nums)
+        result = []
+        for i in range(n - 2):
+            if i > 0 and nums[i] == nums[i - 1]:
+                continue
+            
+            left, right = i + 1, n - 1
+            
+            while left < right:
+                total = nums[i] + nums[left] + nums[right]
+                
+                if total == 0:
+                    result.append([nums[i], nums[left], nums[right]])
+                    
+                    while left < right and nums[left] == nums[left + 1]:
+                        left += 1
+                    while left < right and nums[right] == nums[right - 1]:
+                        right -= 1
+                    
+                    left += 1
+                    right -= 1
+                elif total < 0:
+                    left += 1
+                else:
+                    right -= 1
+        
+        return result
+#----------------------------------------------------------------------
+class Solution:
+    def threeSum(self, nums: List[int]) -> List[List[int]]:
+        nums.sort()
+        i = 0
+        l = i + 1
+        r = len(nums) - 1
+        for i in range(len(nums)):
+            sum = nums[i] + nums[l] + nums[r]
+            if sum < 0 or i == l:
+                l += 1
+            elif sum > 0:
+                r -= 1
+            else:
+                return [nums[i],nums[l], nums[r]]
+            return 
+    
+'''
+nums = [1,2,3,4,5]
+res = []
+res.append([nums[1], nums[3]])
+print(res)
