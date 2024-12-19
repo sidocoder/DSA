@@ -357,3 +357,32 @@ nums = [1,2,3,4,5]
 res = []
 res.append([nums[1], nums[3]])
 print(res)
+
+
+
+class Solution:
+    def containsNearbyDuplicate(self, nums: List[int], k: int) -> bool:
+        hash = {}
+        for i,num in enumerate(nums):
+            if num in hash and abs(i - hash[num]) <= k:
+                return True
+            else:
+                hash[num] = i
+        return False
+
+
+
+l= 0
+r = l + 1
+key = 0
+while l < r:
+    if nums[l] > nums[r]:
+        if nums[r] > key:
+            key = nums[r]
+            profit = key - nums[l]
+            print(profit)
+    else:
+        l += 1
+    
+    r += 1
+
