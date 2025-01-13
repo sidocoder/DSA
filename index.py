@@ -353,13 +353,14 @@ class Solution:
             return 
     
 '''
+'''
 nums = [1,2,3,4,5]
 res = []
 res.append([nums[1], nums[3]])
 print(res)
 
 
-
+#------------------------HASH MAP-----------------------------
 class Solution:
     def containsNearbyDuplicate(self, nums: List[int], k: int) -> bool:
         hash = {}
@@ -371,7 +372,7 @@ class Solution:
         return False
 
 
-
+#-------------------TWO POINTER------------------------------
 l= 0
 r = l + 1
 key = 0
@@ -385,4 +386,69 @@ while l < r:
         l += 1
     
     r += 1
+#-------------contiguous SUB ARRAY SUM IN PREFIXSUM TECHNIQUE---------------
+class Solution:
+    def subarraySum(self, nums: List[int], k: int) -> int:
+        list = [0] * len(nums)
+        list[0] = nums [0]
+        count = 1 
+        for i in range(1, len(nums)):
+            list[i] = list[i - 1] + nums[i]
+            if list[i] == k:
+                count += 1
+            else:
+                count += 1
+            return count
+            
+from heapq import *
+class Solution:
+    def leftmostBuildingQueries(self, heights: list[int], queries: list[list[int]]) -> list[int]:
+        # To store the results for each query
+        result = [-1] * len(queries)  
+        # To group deferred queries by building `bob`
+        qs = [[] for _ in range(len(heights))] 
 
+        for index, (alice, bob) in enumerate(queries):
+            # Ensure `alice` is the smaller index for consistency
+            if alice > bob:
+                alice, bob = bob, alice
+
+            # Directly solvable queries
+            if alice == bob or heights[alice] < heights[bob]:
+                result[index] = bob
+            else:
+                # Defer the query for processing later
+                qs[bob].append((heights[alice], index))  
+
+        # Min-heap to process deferred queries efficiently
+        min_heap = []
+
+        # Iterate through each building
+        for index, height in enumerate(heights):
+            # Add deferred queries related to this building
+            for q in qs[index]:
+                heappush(min_heap, q)
+            
+            # Process the heap for this building
+            while min_heap and min_heap[0][0] < height:
+                # Remove satisfied queries
+                _, query_index = heappop(min_heap)  
+                # Update result with the current building
+                result[query_index] = index  
+
+        return result
+    
+    
+    class Solution(object):
+    def twoSum(self, nums, target):
+        hash = {}
+        for i in range(len(nums)):
+            diff = target - nums[i]
+            if diff in hash:
+                return [hash[diff], i]
+            hash[nums[i]] = i
+        return '''
+nums = tuple()
+for i in range(10):
+    nums += (i,)
+print(nums)
