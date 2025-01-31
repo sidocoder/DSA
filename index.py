@@ -448,7 +448,37 @@ class Solution:
                 return [hash[diff], i]
             hash[nums[i]] = i
         return '''
-nums = tuple()
-for i in range(10):
-    nums += (i,)
-print(nums)
+c = 'hello world'
+'''
+print( c[2])
+print( c[5])
+print( c[2:8:2])
+print(c[::-1])'''
+
+a = 'hello'
+b = 'team'
+d = a + b
+print(d)
+print(a * 2)
+
+    
+    x= int(input("enter an array: "))
+    y = int(input())
+    z = int(input())
+    n = int(input())
+    nums = []
+    nums.append(x,y,z)
+    print(nums)
+#--------------------------------------------
+str1 = str(input())
+str2 = str(input())
+if str1.lower() == str2.lower():
+    print (0)
+elif str1.lower() < str2.lower():
+    print (-1)
+elif str1.lower() > str2.lower():
+    print(1)
+     
+        
+    
+        
