@@ -8,6 +8,8 @@ for i in range(n):
         h = l // 2
         if s[:h] == s[h:]:
             print('YES')
+        else:
+            print('NO')
     else:
         print('NO')
 

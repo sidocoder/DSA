@@ -1,29 +1,51 @@
 
 from collections import Counter
+def issubs(s,t):
+    index = 0
+    for char in s:
+        index = t.find(char,index)
+        if index == -1:
+            return False
+        index+=1
+    return True
+        
+
+
 
 def transform(s, t, p):
-    it = iter(t)
-    for c in it:
-        for c in s:
-            if s == t:
-                print('No')
+    if not issubs(s,t):
+        return 'NO'
     
-    count_s = Counter(s)
-    count_t = Counter(t)
-    count_p = Counter(p)
-    
-    for c in count_t:
-        if count_t[c] > count_s.get(c, 0) + count_p.get(c, 0):
-            return "NO"
-    
-    return "YES"
+    hashh_s = Counter(s)
+    hashh_p = Counter(p)
+    needed = Counter()
 
-q = int(input().strip())
-results = []
-for _ in range(q):
+    for char in t:
+        if char not in hashh_s:
+            needed[char]+=1
+        else:
+            hashh_s[char]-=1
+            if hashh_s[char] == 0:
+                del hashh_s[char]
+    for val,fre in needed.items():
+        if val in hashh_p:
+            if fre > hashh_p[val]:
+                return 'NO'
+        else:
+
+            return 'NO'
+    return 'YES'
+
+    
+
+    
+
+
+
+
+for _ in range(int(input())):
     s = input().strip()
     t = input().strip()
     p = input().strip()
-    results.append(transform(s, t, p))
+    print(transform(s,t,p))
 
-print((results))
