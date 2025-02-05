@@ -9,9 +9,6 @@ def issubs(s,t):
         index+=1
     return True
         
-
-
-
 def transform(s, t, p):
     if not issubs(s,t):
         return 'NO'
