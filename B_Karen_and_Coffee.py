@@ -1,55 +1,31 @@
-# from collections import Counter
+def coffee_brewing():
+    r, k, q = map(int, input().split())
 
-# r, k, t = map(int, input().split())
-# intervals = []
-# for _ in range(t):
-#     s, e = map(int, input().split())
-#     intervals.append((s, e)) 
+    MAX_TEMPERATURE = 200000
+    freq = [0] * (MAX_TEMPERATURE + 2)
 
-# queries = []
-# for _ in range(t):
-#     c, d = map(int, input().split())
-#     queries.append((c, d))  
+    for _ in range(r):
+        s, e = map(int, input().split())
+        freq[s] += 1
+        freq[e + 1] -= 1
 
-# hashh = Counter()
-# for _ in range(r):
-#     start = s
-#     end = e
-#     while start <= eend:
-#         hashh[start] += 1
-#         start+= 1
+    for i in range(1, MAX_TEMPERATURE + 1):
+        freq[i] += freq[i - 1]
 
+    admissible = [0] * (MAX_TEMPERATURE + 1)
+    for i in range(1, MAX_TEMPERATURE + 1):
+        if freq[i] >= k:
+            admissible[i] = 1
 
-from collections import Counter
+    admissible_prefix = [0] * (MAX_TEMPERATURE + 1)
+    for i in range(1, MAX_TEMPERATURE + 1):
+        admissible_prefix[i] = admissible_prefix[i - 1] + admissible[i]
 
-r, k, t = map(int, input().split())
+    results = []
+    for _ in range(q):
+        c, d = map(int, input().split())
+        results.append(str(admissible_prefix[d] - admissible_prefix[c - 1]))
 
+    print("\n".join(results))
 
-intervals = []
-for _ in range(t):
-    s, e = map(int, input().split())
-    intervals.append((s, e)) 
-
-
-queries = []
-for _ in range(t):
-    c, d = map(int, input().split())
-    queries.append((c, d))  
-
-
-hashh = Counter()
-
-
-for s, e in intervals:
-    for num in range(s, e + 1):
-        hashh[num] += 1
-
-for c, d in queries:
-    count = sum(1 for num in range(c, d + 1) if hashh[num] >= 2)
-    print(count)  
-
-
-
-
-
-
+coffee_brewing()
