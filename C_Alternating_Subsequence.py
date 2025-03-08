@@ -1,4 +1,8 @@
-def max_alternating_subsequence(n, a):
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    a = list(map(int,input().split()))
+
     total_sum = 0
     max_element = a[0] 
     
@@ -11,10 +15,5 @@ def max_alternating_subsequence(n, a):
             max_element = a[i]
     
     total_sum += max_element
-    return total_sum
+    print(total_sum)
 
-t = int(input())
-for _ in range(t):
-    n = int(input())
-    a = list(map(int, input().split()))
-    print(max_alternating_subsequence(n, a))

@@ -1,12 +1,5 @@
-# n,t,c = map(int, input().split())
-# nums = list(map(int,input().split()))
-
-
-# count = 0
-# # if len(nums) == 1 and c == nums[left]:
-# #     count+=1
-# # if c > len(nums) and len(nums) == 1 and nums[left] > c:
-# #     print(0)
+n,t,c = map(int, input().split())
+nums = list(map(int,input().split()))
 
 # right = 0
 # left = 0
@@ -21,12 +14,6 @@
 #         right += 1
 #     right += 1
    
-
-# print(count)
-
-
-n, t, c = map(int, input().split())
-nums = list(map(int, input().split()))
 
 count = 0
 left = 0
