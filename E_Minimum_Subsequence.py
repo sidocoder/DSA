@@ -1,19 +1,35 @@
 t = int(input())
 for _ in range(t):
     n = int(input())
-    nums = map(int, input().split())
-
-    stack = []
-    popped = []
-    count = 0
-    for num in nums:
-        stack.append(num)
-        if stack and num == stack[-1]:
-            m = stack.pop()
-            if 
-            count += 1
-        
-    print(count + 1)
-    print()
-
+    s = input()
     
+    count = 0
+    zero_stack = []
+    one_stack = []
+    ans = []
+
+    for i in range(len(s)):
+        if s[i] == '0':
+            if one_stack:
+                sub_sequence_id = one_stack.pop()
+                ans.append(sub_sequence_id)
+                zero_stack.append(sub_sequence_id)
+
+            else:
+                count += 1
+                ans.append(count)
+                zero_stack.append(count)
+
+        else:
+            if zero_stack:
+                sub_sequence_id = zero_stack.pop()
+                ans.append(sub_sequence_id)
+                one_stack.append(sub_sequence_id)
+
+            else:
+                count += 1
+                ans.append(count)
+                one_stack.append(count)
+
+    print(count)
+    print(*ans)
