@@ -1,5 +1,5 @@
 def min_kicks_to_decide(s):
-    # first_team = second_team = 0
+    first_team = second_team = 0
     def team(first):
         team1_remaining = team2_remaining = 5  
 
@@ -21,7 +21,7 @@ def min_kicks_to_decide(s):
             elif second_team > first_team + team1_remaining:
                 return i + 1
 
-    return 10 
+    return 10  
 
 t = int(input())
 for _ in range(t):
