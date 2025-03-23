@@ -3,24 +3,17 @@ from collections import deque
 n, k = map(int, input().split())
 a = list(map(int, input().split()))
 
-maxDeque = deque()
-minDeque = deque()
-l = 0
-total = 0
+l, r = 0, 0
+count = 0
 
-for r in range(n):
-    while maxDeque and a[maxDeque[-1]] <= a[r]:
-        maxDeque.pop()
-    maxDeque.append(r)
-    while minDeque and a[minDeque[-1]] >= a[r]:
-        minDeque.pop()
-    minDeque.append(r)
-    while a[maxDeque[0]] - a[minDeque[0]] > k:
-        if maxDeque[0] == l:
-            maxDeque.popleft()
-        if minDeque[0] == l:
-            minDeque.popleft()
+while l <= r and r < len(a):
+    _max = max(a[l:r + 1])
+    _min = min(a[l:r + 1])
+    if _max - _min <= k:
+        count += 1
+        r += 1
+    else:
         l += 1
-    total += r - l + 1
+        r = l
 
-print(total)
+print(count)
