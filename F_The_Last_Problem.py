@@ -1,30 +1,32 @@
-n= int(input())
+n = int(input())
 a = list(map(int, input().split()))
 b = list(map(int, input().split()))
-pref = [0]
-for i in range(n):
-    pref.append(pref[-1] + a[i] * b[i])
-    
-ans = pref[-1]
 
-for i in range(n):
-    # odd 
-    l, r = i-1, i + 1
-    prof = a[i] * b[i]
-    while l > 0 and r < n:
-        prof += a[r] * b[l]
-        prof += a[l] * b[r]
-        ans = max(ans, prof + (pref[-1] - pref[r + 1]) + pref[l])  
-        r += 1
-        l -= 1
-    # even 
-    prof = 0
-    l, r = i, i + 1
-    while l > 0 and r < n:
-        prof += a[r] * b[l]
-        prof += a[l] * b[r]
-        ans = max(ans, prof + (pref[-1] - pref[r + 1]) + pref[l])
+# Calculate the original sum S.
+original_sum = sum(a[i] * b[i] for i in range(n))
+
+best = 0  # Best improvement found by reversing a subarray
+
+# Check odd-length reversals (centered at i)
+for center in range(n):
+    current_delta = 0
+    l, r = center - 1, center + 1
+    while l >= 0 and r < n:
+        # Calculate the delta added by expanding to include a[l] and a[r]
+        current_delta += a[l] * b[r] + a[r] * b[l] - a[l] * b[l] - a[r] * b[r]
+        best = max(best, current_delta)
         l -= 1
         r += 1
-print(ans)
-        
+
+# Check even-length reversals (center between i and i+1)
+for center in range(n - 1):
+    current_delta = 0
+    l, r = center, center + 1
+    while l >= 0 and r < n:
+        current_delta += a[l] * b[r] + a[r] * b[l] - a[l] * b[l] - a[r] * b[r]
+        best = max(best, current_delta)
+        l -= 1
+        r += 1
+
+# Output the maximum sum achievable after at most one reversal
+print(original_sum + best)

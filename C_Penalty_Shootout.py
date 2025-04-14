@@ -1,29 +1,23 @@
-def min_kicks_to_decide(s):
-    first_team = second_team = 0
-    def team(first):
-        team1_remaining = team2_remaining = 5  
-
+def min_kicks(s):
+    def simulate(s, favor_team):
+        a_score = b_score = 0
+        a_remain = b_remain = 5
         for i in range(10):
-            if all(char == '?' for char in s):
-                return 6
-            if i % 2 == 0:  
-                if s[i] == '1' or s[i] == '?' and first_team:
-                    first_team += 1
-                team1_remaining -= 1
-            else:  
-                if s[i] == '1' or s[i] == '?' and second_team:
-                    second_team += 1
-                team2_remaining -= 1
-
-        
-            if first_team > second_team + team2_remaining:
+            if i % 2 == 0:
+                a_remain -= 1
+                if s[i] == '1' or (s[i] == '?' and favor_team == 0):
+                    a_score += 1
+            else:
+                b_remain -= 1
+                if s[i] == '1' or (s[i] == '?' and favor_team == 1):
+                    b_score += 1
+            if a_score > b_score + b_remain or b_score > a_score + a_remain:
                 return i + 1
-            elif second_team > first_team + team1_remaining:
-                return i + 1
+        return 10
 
-    return 10  
+    return min(simulate(s, 0), simulate(s, 1))
 
 t = int(input())
 for _ in range(t):
     s = input().strip()
-    print(min_kicks_to_decide(s))
+    print(min_kicks(s))
