@@ -1,0 +1,13 @@
+from collections import Counter
+
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    a = list(map(int, input().split()))
+    freq = Counter(a)
+    max_freq = max(freq.values())
+    
+    if max_freq > n - max_freq:
+        print(2 * max_freq - n)
+    else:
+        print(n % 2)
