@@ -1,5 +1,9 @@
 t = int(input())
 for _ in range(t):
     a, b = map(int, input().split())
-    total = a + 2 * b
-    print(total + 1)
+    if a == 0:
+        print(1)
+    elif b == 0:
+        print(a + 1)
+    else:
+        print(a + (b * 2)+ 1)
